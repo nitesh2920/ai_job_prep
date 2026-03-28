@@ -31,8 +31,9 @@ async function JobName({ jobInfoId }: { jobInfoId: string }) {
   return jobInfo?.name ?? "Job Description"
 }
 
-async function getJobInfo(id: string) {
+async function getJobInfo(id: string | undefined) {
   "use cache"
+  if (id == null) return null
   cacheTag(getJobInfoIdTag(id))
 
   return db.query.JobInfoTable.findFirst({

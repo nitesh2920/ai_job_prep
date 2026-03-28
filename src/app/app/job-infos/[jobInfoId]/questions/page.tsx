@@ -42,8 +42,9 @@ async function SuspendedComponent({ jobInfoId }: { jobInfoId: string }) {
   return <NewQuestionClientPage jobInfo={jobInfo} />
 }
 
-async function getJobInfo(id: string, userId: string) {
+async function getJobInfo(id: string | undefined, userId: string | undefined) {
   "use cache"
+  if (id == null || userId == null) return null
   cacheTag(getJobInfoIdTag(id))
 
   return db.query.JobInfoTable.findFirst({
