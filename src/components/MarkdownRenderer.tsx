@@ -9,7 +9,7 @@ export function MarkdownRenderer({
   return (
     <div
       className={cn(
-        "max-w-none prose prose-neutral dark:prose-invert font-sans",
+        "max-w-none prose prose-neutral dark:prose-invert font-sans break-words overflow-x-hidden w-full",
         className
       )}
     >
