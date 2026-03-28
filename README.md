@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Powered Job Prep Platform
 
-## Getting Started
+An intelligent job interview preparation platform that uses AI to analyze resumes, generate tailored interview questions, and conduct real-time empathic voice interviews using Hume AI.
 
-First, run the development server:
+## 🚀 Features
+- **Resume Analysis**: Upload your resume and get detailed feedback using Google Gemini.
+- **Tailored Questions**: Generate specific interview questions based on job descriptions and your experience.
+- **Voice Interviews**: Practice interviews with an empathic AI interviewer (Hume AI).
+- **Comprehensive Dashboard**: Track your job prep progress and interview history.
+- **Secure Auth**: Authentication and user management via Clerk.
+- **Cloud Database**: Fast and reliable data storage using Neon PostgreSQL.
+
+## 🛠️ Tech Stack
+- **Framework**: Next.js 15 (App Router)
+- **AI**: Google Gemini (Analysis), Hume AI (Voice Interface)
+- **Database**: PostgreSQL (Neon.tech)
+- **ORM**: Drizzle ORM
+- **Authentication**: Clerk
+- **Security**: Arcjet (Rate limiting & Bot protection)
+- **Styling**: Tailwind CSS & Lucide React
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Database (Neon.tech)
+DATABASE_URL=your_postgres_connection_string
+
+# Arcjet
+ARCJET_KEY=your_arcjet_key
+
+# Clerk (Authentication)
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_WEBHOOK_SIGNING_SECRET=your_clerk_webhook_signing_secret
+
+# Clerk Navigation
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/app
+NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL=/onboarding
+
+# Hume AI
+HUME_API_KEY=your_hume_api_key
+HUME_SECRET_KEY=your_hume_secret_key
+NEXT_PUBLIC_HUME_CONFIG_ID=your_hume_config_id
+
+# AI Models
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎙️ Hume AI Setup Guide
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To enable voice interviews, follow these steps to get your Hume AI credentials:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Sign Up**: Go to the [Hume AI Portal](https://portal.hume.ai/) and create an account.
+2.  **API Keys**:
+    -   Navigate to the **API Keys** section.
+    -   Generate a new **API Key**.
+    -   Copy the `API Key` and the `Secret Key` (you only see the Secret Key once, so save it safely!).
+3.  **EVI Configuration**:
+    -   Go to **EVI (Empathic Voice Interface)** in the sidebar.
+    -   Create a **New Configuration**.
+    -   Set your interviewer's persona (e.g., "Professional Technical Interviewer").
+    -   Save the configuration and copy the **Config ID**.
+4.  **Update `.env`**: Add the `HUME_API_KEY`, `HUME_SECRET_KEY`, and `NEXT_PUBLIC_HUME_CONFIG_ID` to your environment file.
 
-## Learn More
+## 🏃 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Setup Database
+```bash
+npm run db:push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Run Development Server
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Security
+The project uses **Arcjet** for protecting sensitive routes and ensuring the AI models are used responsibly by preventing excessive requests.
