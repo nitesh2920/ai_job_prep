@@ -10,6 +10,7 @@ import {
   FileText,
   Search,
   SpeechIcon,
+  Zap,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -38,8 +39,10 @@ function Navbar() {
       <div className="container">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-2">
-            <BrainCircuitIcon className="size-8 text-primary" />
-            <h1 className="text-2xl font-bold text-foreground">Landr</h1>
+            <div className="bg-primary p-1.5 rounded-lg">
+              <Zap className="size-6 text-primary-foreground fill-current" />
+            </div>
+            <h1 className="text-2xl font-bold text-foreground tracking-tight">VeloAI</h1>
           </div>
           <Suspense
             fallback={
@@ -82,9 +85,9 @@ function Hero() {
           <h2 className="text-4xl sm:text-6xl font-bold text-foreground mb-6 leading-tight">
             Land your dream job with{" "}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent text-nowrap">
-              AI-powered
+              VeloAI
             </span>{" "}
-            job preparation
+            acceleration
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Skip the guesswork and accelerate your job search. Our AI platform
@@ -434,7 +437,7 @@ function Stats() {
             <span className="text-primary">faster and better</span>
           </h3>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Don&apos;t just take our word for it. See how Landr users
+            Don&apos;t just take our word for it. See how VeloAI users
             consistently outperform the competition in every metric that
             matters.
           </p>
@@ -482,7 +485,7 @@ function Testimonials() {
       avatar:
         "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
       content:
-        "Landr completely transformed my interview preparation. The AI practice sessions felt so realistic that I walked into my Google interview feeling completely confident. Landed the offer on my first try!",
+        "VeloAI completely transformed my interview preparation. The AI practice sessions felt so realistic that I walked into my Google interview feeling completely confident. Landed the offer on my first try!",
       timeToOffer: "3 weeks",
     },
     {
@@ -492,7 +495,7 @@ function Testimonials() {
       avatar:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
       content:
-        "I was struggling with behavioral questions until I found Landr. The AI helped me craft compelling stories and practice my delivery. Got offers from 3 different companies!",
+        "I was struggling with behavioral questions until I found VeloAI. The AI helped me craft compelling stories and practice my delivery. Got offers from 3 different companies!",
       timeToOffer: "5 weeks",
     },
     {
@@ -502,7 +505,7 @@ function Testimonials() {
       avatar:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
       content:
-        "The resume optimization feature was a game-changer. My callback rate tripled after implementing Landr&apos;s suggestions. Worth every penny and more.",
+        "The resume optimization feature was a game-changer. My callback rate tripled after implementing VeloAI&apos;s suggestions. Worth every penny and more.",
       timeToOffer: "4 weeks",
     },
     {
@@ -522,7 +525,7 @@ function Testimonials() {
       avatar:
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
       content:
-        "I was career-changing into tech and felt overwhelmed. Landr&apos;s personalized guidance gave me the confidence to pursue design roles. Now I&apos;m living my dream at Figma!",
+        "I was career-changing into tech and felt overwhelmed. VeloAI&apos;s personalized guidance gave me the confidence to pursue design roles. Now I&apos;m living my dream at Figma!",
       timeToOffer: "6 weeks",
     },
     {
@@ -532,7 +535,7 @@ function Testimonials() {
       avatar:
         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
       content:
-        "The salary negotiation tips alone paid for the platform 10x over. I increased my offer by $25K just by following Landr&apos;s guidance. Absolutely worth it!",
+        "The salary negotiation tips alone paid for the platform 10x over. I increased my offer by $25K just by following VeloAI&apos;s guidance. Absolutely worth it!",
       timeToOffer: "4 weeks",
     },
   ]
@@ -547,7 +550,7 @@ function Testimonials() {
           </h3>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
             Join thousands of professionals who&apos;ve accelerated their
-            careers with Landr
+            careers with VeloAI
           </p>
         </div>
 
