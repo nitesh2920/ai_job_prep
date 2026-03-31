@@ -1,9 +1,11 @@
 import { db } from "@/drizzle/db"
 import { QuestionTable } from "@/drizzle/schema"
 import { getJobInfoIdTag } from "@/features/jobInfos/dbCache"
+import { updateQuestion } from "@/features/questions/db"
 import { getQuestionIdTag } from "@/features/questions/dbCache"
 import { generateAiQuestionFeedback } from "@/services/ai/questions"
 import { getCurrentUser } from "@/services/clerk/lib/getCurrentUser"
+import { createDataStreamResponse } from "ai"
 import { eq } from "drizzle-orm"
 import { cacheTag } from "next/dist/server/use-cache/cache-tag"
 import z from "zod"
@@ -38,9 +40,19 @@ export async function POST(req: Request) {
   const res = generateAiQuestionFeedback({
     question: question.text,
     answer,
+    onFinish: async feedback => {
+      await updateQuestion(questionId, {
+        answer,
+        feedback,
+      })
+    },
   })
 
-  return res.toDataStreamResponse({ sendUsage: false })
+  return createDataStreamResponse({
+    execute: async dataStream => {
+      res.mergeIntoDataStream(dataStream)
+    },
+  })
 }
 
 async function getQuestion(id: string, userId: string) {

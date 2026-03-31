@@ -66,12 +66,15 @@ Guidelines:
 export function generateAiQuestionFeedback({
   question,
   answer,
+  onFinish,
 }: {
   question: string
   answer: string
+  onFinish?: (feedback: string) => void
 }) {
   return streamText({
-    model: google("gemini-2.5-flash"),
+    model: google("gemini-1.5-flash"),
+    onFinish: event => onFinish?.(event.text),
     prompt: answer,
     maxSteps: 10,
     experimental_continueSteps: true,

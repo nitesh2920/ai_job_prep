@@ -68,12 +68,12 @@ export function JobInfoForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Company Name</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
               <FormDescription>
-                This name is displayed in the UI for easy identification.
+                The company name in which you are applying for is displayed in the UI for easy identification.
               </FormDescription>
               <FormMessage />
             </FormItem>

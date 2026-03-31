@@ -17,6 +17,8 @@ export const QuestionTable = pgTable("questions", {
     .notNull(),
   text: varchar().notNull(),
   difficulty: questionDifficultyEnum().notNull(),
+  answer: varchar(),
+  feedback: varchar(),
   createdAt,
   updatedAt,
 })

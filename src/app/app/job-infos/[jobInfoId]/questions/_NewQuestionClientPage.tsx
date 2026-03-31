@@ -4,6 +4,7 @@ import { BackLink } from "@/components/BackLink"
 import { MarkdownRenderer } from "@/components/MarkdownRenderer"
 import { Button } from "@/components/ui/button"
 import { LoadingSwap } from "@/components/ui/loading-swap"
+import Link from "next/link"
 import {
   ResizableHandle,
   ResizablePanel,
@@ -87,33 +88,40 @@ export function NewQuestionClientPage({
             {jobInfo.name}
           </BackLink>
         </div>
-        <Controls
-          reset={() => {
-            setStatus("init")
-            setQuestion("")
-            setFeedback("")
-            setAnswer(null)
-          }}
-          disableAnswerButton={
-            answer == null || answer.trim() === "" || questionId == null
-          }
-          status={status}
-          loadingButton={loadingButton}
-          generateFeedback={() => {
-            if (answer == null || answer.trim() === "" || questionId == null)
-              return
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" size="sm" asChild>
+            <Link href={`/app/job-infos/${jobInfo.id}/questions`}>
+              Back to History
+            </Link>
+          </Button>
+          <Controls
+            reset={() => {
+              setStatus("init")
+              setQuestion("")
+              setFeedback("")
+              setAnswer(null)
+            }}
+            disableAnswerButton={
+              answer == null || answer.trim() === "" || questionId == null
+            }
+            status={status}
+            loadingButton={loadingButton}
+            generateFeedback={() => {
+              if (answer == null || answer.trim() === "" || questionId == null)
+                return
 
-            setLoadingButton("answer")
-            generateFeedback(answer?.trim(), { body: { questionId } })
-          }}
-          generateQuestion={difficulty => {
-            setQuestion("")
-            setFeedback("")
-            setAnswer(null)
-            setLoadingButton(difficulty)
-            generateQuestion(difficulty, { body: { jobInfoId: jobInfo.id } })
-          }}
-        />
+              setLoadingButton("answer")
+              generateFeedback(answer?.trim(), { body: { questionId } })
+            }}
+            generateQuestion={difficulty => {
+              setQuestion("")
+              setFeedback("")
+              setAnswer(null)
+              setLoadingButton(difficulty)
+              generateQuestion(difficulty, { body: { jobInfoId: jobInfo.id } })
+            }}
+          />
+        </div>
         <div className="flex-grow hidden md:block" />
       </div>
       <QuestionContainer
