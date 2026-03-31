@@ -4,6 +4,7 @@ import "./globals.css"
 import { ClerkProvider } from "@/services/clerk/components/ClerkProvider"
 import { ThemeProvider } from "next-themes"
 import { Toaster } from "@/components/ui/sonner"
+import { ScrollbarManager } from "@/components/landing/ScrollbarManager"
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -16,8 +17,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "VeloAI - Intelligent Job Prep",
-  description: "Advanced AI interview preparation and resume analysis platform.",
+  title: "VeloAI - Accelerate Your Job Search",
+  description: "Advanced AI interview preparation and resume analysis for high-velocity career growth.",
 }
 
 export default function RootLayout({
@@ -36,6 +37,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <ScrollbarManager />
             <Toaster />
           </ThemeProvider>
         </body>
